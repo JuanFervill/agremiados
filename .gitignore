@@ -1,0 +1,4 @@
+.env
+node_modules
+public/scripts/inicio.js
+public/scripts/mailer.js

@@ -1,0 +1,248 @@
+:root {
+    font-family: 'Eagle Lake';
+    font-family: 'Macondo';
+    font-family: 'Spectral';
+}
+body {
+    font-family: 'Spectral', sans-serif;
+}
+h1, h2, h3 {
+    font-family: 'Eagle Lake';
+    color: #C9A66B;
+}
+
+a {
+    text-decoration: none;
+}
+
+.card-body {
+    text-align: center;
+    border: 3px solid #C9A66B;
+    border-radius: 20px;
+}
+
+.listado-grupos {
+    margin: 5px;
+}
+
+.caja-arte, .fotoperfil {
+    cursor: pointer;
+}
+
+.caja-arte:hover, .fotoperfil:hover {
+    transform: scale(1.05); /* Aumenta un 10% su tamaño */
+    transition: transform 0.3s ease-in-out; /* Suaviza la animación */
+}
+
+.titulospags {
+    text-align: center;
+    padding-top: 50px;
+}
+
+thead {
+    font-family: 'Macondo';
+}
+
+table {
+    border-radius: .8rem;
+}
+
+.infodiv {
+    background-color: #6B6254;
+    color: #EAD9B0;
+    border: 2px solid #C9A66B;
+    border-radius: 20px;
+    padding: 10px;
+}
+
+.infodiv img {
+    margin: auto;
+    border: 2px solid #C9A66B;
+    border-radius: 20px;
+}
+
+.publicacion{
+    max-width: 80%;
+    margin: auto;
+    padding: 10px;
+}
+
+.infodiv .btn-success {
+    background-color: #8E7044;
+    border-color: #C9A66B;
+}
+
+.infodiv .btn-success:hover {
+    background-color: #3C4F2D;
+    border-color: #EAD9B0;
+    color: #EAD9B0;
+}
+
+.input-login {
+    border-radius: .8rem;
+    margin: 3px;
+    padding: 6px;
+}
+
+.oculto {
+    display: none !important;
+}
+
+.btn-success {
+    background-color: #7A1F2D;
+    border-color: #7A1F2D;
+    margin: 2px;
+    padding: .8rem 0;
+    text-transform: uppercase;
+    border-radius: .8rem;
+    width: 7rem;
+    height: 3rem;
+    transition: all .2s ease-in-out;
+}
+
+.btn-success:hover {
+    background-color: #B02E40;
+    border-color: #B02E40;
+    width: 8rem;
+}
+
+.btn-danger {
+    text-decoration: none;
+    background-color: #7A1F2D;
+    color: white;
+    border-radius: .8rem;
+    width: 8rem;
+    transition: background-color 0.3s ease;
+}
+
+.home {
+    position: relative;
+}
+.home .navegacion {
+    background: transparent;
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+}
+.nav-link.active {
+    border-bottom: 5px solid white;
+}
+blockquote {
+    font-weight: bold;
+    line-height: 2;
+}
+p {
+    font-size: 1.2rem;
+    line-height: 2;
+}
+.enlacetabla {
+    color: #EAD9B0;
+    text-decoration: none;
+    transition: all 0.3s ease;
+}
+.enlacetabla:hover {
+    color: #D4B678;
+    font-size: 1.1rem;
+}
+.navegacion {
+    background-color: #A67C52;
+}
+header .nav a {
+    font-family: 'Eagle Lake';
+    font-size: 5rem;
+}
+footer .nav a,
+.copyright {
+    font-family: 'Eagle Lake';
+    font-size: 1.3rem;
+    color: black;
+}
+.listado-iconos {
+    background-color: rgb(245, 245, 245);
+}
+.listado-iconos img {
+    height: 100px;
+}
+.blockquote-footer {
+    text-align: right;
+    color: #DC135F;
+    font-weight: bold;
+    margin-top: 1rem;
+}
+.imagencarrusel {
+    max-width: 100%;
+    max-height: 480px;
+    height: auto;
+    object-fit: cover;
+    border-radius: 10px;
+    border: 2px solid #ffc107;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.imagenpublicacion {
+    max-width: 80%;
+    max-height: 480px;
+    height: auto;
+    object-fit: cover;
+    border-radius: 10px;
+    border: 2px solid #ffc107;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    margin: auto;
+    padding: 10px;
+}
+
+.imagencarrusel:hover {
+    transform: scale(1.05);
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.3);
+}
+
+.texto-carousel {
+    color: #2c3e50;
+    background-color: rgba(255, 255, 255, 0.7);
+    padding: 12px 20px;
+    border-radius: 8px;
+    border: 2px solid rgba(255, 255, 255, 0.9);
+    text-shadow: 1px 1px 5px rgba(255, 255, 255, 0.8);
+    font-size: 1rem;
+    opacity: 0.95;
+}
+
+.texto-carousel h5 {
+    font-size: 1.8rem;
+    font-weight: bold;
+    margin-bottom: 0.6rem;
+    text-transform: uppercase;
+}
+
+.texto-carousel p {
+    font-size: 1.1rem;
+    margin-bottom: 0;
+}
+
+.navbar{
+    background-color: #3E2C20;
+}
+
+.nav-link {
+    color: #EAD9B0;
+    font-size: 1.7rem;
+    transition: 0.3s ease;
+}
+
+.nav-link:hover {
+    color: #C9A66B;
+    font-size: 1.8rem;
+}
+
+@media (max-width: 768px) {
+    .texto-carousel {
+        font-size: 1rem;
+        padding: 10px 15px;
+    }
+
+    .texto-carousel h5 {
+        font-size: 1.5rem;
+    }
+}

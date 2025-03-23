@@ -1,0 +1,53 @@
+<%- include('./layouts/index'); %>
+
+<body class="home">
+<%- include('./layouts/header'); %>
+<h1 class="titulospags">Nuevas publicaciones</h1>
+<br>
+<div class="row listado-grupos">
+    <% if (imagenes && imagenes.length > 0) { imagenes.forEach(imagen => { %>
+        <div class="col-6 col-md-6 col-lg-4 mb-4">
+            <div class="card shadow-lg border-light infodiv h-100 d-flex flex-column">
+                <div class="card-body d-flex flex-column">
+                    <a href="/info-arte/<%= imagen.id %>">
+                        <img src="/img/<%= imagen.nombreimg %>" class="imagencarrusel" alt="Imagen 3">
+                    </a>
+                    <blockquote class="blockquote mt-auto">
+                        <p><%= usuarios[imagen.usuario].nombre %> </p>
+                        <p class="tipo-arte"><%= imagen.artesania %></p>
+                    </blockquote>
+                </div>
+            </div>
+        </div>
+
+<% }) } else { %>
+        <div class="col-6 col-md-4 col-lg-3 mb-4">
+            <div class="card shadow-lg border-light infodiv">
+                <div class="card-body">
+                    <blockquote class="blockquote">
+                        <p>No hay arte disponible</p>
+                    </blockquote>
+                </div>
+            </div>
+        </div>
+    <% } %>
+        <div class="container text-center">
+            <div class="row">
+                    <p><%= page %>/<%= max %></p>
+                    <% if(imagenes && imagenes.length > 0) {
+                    if(prev)
+                    { %>
+                <div class="col">
+                        <a class="btn btn-success" href="/arte/<%= prev %>">Previo</a>
+                </div>
+                    <%}if(sig && page<max){%>
+                <div class="col">
+                        <a class="btn btn-success" href="/arte/<%= sig %>">Siguiente</a>
+                </div>
+                    <%}}%>
+            </div>
+        </div>
+</div>
+
+<%- include('./layouts/footer'); %>
+</body>

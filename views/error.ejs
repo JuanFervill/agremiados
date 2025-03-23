@@ -1,0 +1,19 @@
+<%- include('./layouts/index'); %>
+
+<body class="home">
+    <%- include('./layouts/header'); %>
+    <div class="container mt-4 contenido-principal" id="inicio">
+        <div class="row" id="logout2">
+            <div class="col-md-12 text-center infodiv">
+                <h3 class="titulo-pagina">Se ha producido un error</h3>
+                <p class="descripcion">
+                    No se ha podido completar la realización de <%= proceso %> debido al siguiente error:
+                </p>
+                <p class="descripcion">
+                    <%= errorDatos %>
+                </p>
+            </div>
+        </div>
+    </div>
+    <%- include('./layouts/footer'); %>
+</body>

@@ -1,0 +1,37 @@
+<%- include('./layouts/index'); %>
+
+<body class="home">
+<%- include('./layouts/header'); %>
+<div class="container mt-4 p-4 contenido-principal" id="inicio" style="max-width: 500px;">
+    <% if (errores) { %>
+        <% errores.forEach(error => { %>
+            <div class="alert col alert-danger text-center"><%= error.mensaje %></div>
+        <% }); %>
+    <% } %>
+    <div class="row">
+        <div class="col text-center infodiv">
+            <h2 class="titulo-pagina mb-4">Registro de Usuario</h2>
+            <form id="form_registro" action="/registrarse" method="post">
+                <div class="mb-3">
+                    <label for="correo_registro" class="form-label">Correo electrónico</label>
+                    <input type="email" class="form-control form-control-lg" id="correo_registro" name="correo_registro" placeholder="name@example.com">
+                </div>
+                <div class="mb-3">
+                    <label for="user_registro" class="form-label">Nombre de usuario</label>
+                    <input type="text" class="form-control form-control-lg" id="user_registro" name="user_registro" placeholder="UserName">
+                </div>
+                <div class="mb-3">
+                    <label for="password_registro" class="form-label">Contraseña</label>
+                    <input type="password" class="form-control form-control-lg" id="password_registro" name="password_registro" placeholder="Contraseña">
+                </div>
+                <div class="mb-3">
+                    <label for="artesania_registro" class="form-label">Artesanía principal</label>
+                    <input type="text" class="form-control form-control-lg" id="artesania_registro" name="artesania_registro" placeholder="Pirograbado">
+                </div>
+                <button type="submit" class="btn btn-success">Registrarse</button>
+            </form>
+        </div>
+    </div>
+</div>
+<%- include('./layouts/footer'); %>
+</body>

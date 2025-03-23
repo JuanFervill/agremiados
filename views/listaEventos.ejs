@@ -1,0 +1,52 @@
+<%- include('./layouts/index'); %>
+
+<body class="home">
+<%- include('./layouts/header'); %>
+<h1 class="titulospags">Listado de Eventos</h1>
+
+<div class="container mt-4 contenido-principal infodiv">
+    <table class="table infodiv">
+        <thead>
+            <tr>
+                <th scope="col">Evento</th>
+                <th scope="col">Fecha</th>
+                <th scope="col">Ubicación</th>
+            </tr>
+        </thead>
+        <tbody>
+        <% if(mercados && mercados.length > 0) {
+        mercados.forEach(mercado => {
+        %>
+            <tr>
+                <td><a class="enlacetabla" href="/info-evento/<%= mercado.id %>"><%= mercado.nombre %></a></td>
+                <td><%= moment(mercado.fecha).format('DD/MM/YYYY') %></td>
+                <td><%= mercado.ubicacion %></td>
+                <td><a class="btn-danger" href="/anula-evento/<%= mercado.id %>">Anular</a></td>
+            </tr>
+        <% }); } else { %>
+            <tr>
+                <td>No hay eventos</td>
+            </tr>
+        <% } %>
+        </tbody>
+    </table>
+    <div class="container text-center">
+        <div class="row">
+            <p><%= page %>/<%= max %></p>
+            <% if(mercados && mercados.length > 0) {
+            if(prev)
+            { %>
+                <div class="col">
+                    <a class="btn btn-success" href="/listaEventos/<%= prev %>">Previo</a>
+                </div>
+            <%}if(sig && page<max){%>
+                <div class="col">
+                    <a class="btn btn-success" href="/listaEventos/<%= sig %>">Siguiente</a>
+                </div>
+            <%}}%>
+        </div>
+    </div>
+</div>
+
+<%- include('./layouts/footer'); %>
+</body>
