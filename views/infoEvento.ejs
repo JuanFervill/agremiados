@@ -16,7 +16,7 @@
                     <p>Plazas disponibles: <%= mercado.capacidad %></p>
                     <% if(!apuntado){ %>
                     <p id="idviaje" style="display: none"><%= mercado.id %></p>
-                    <button class="btn btn-success btn-apuntarse" id="apuntarse">Apuntarse</button>
+                    <a href="/apuntarse/<%= mercado.id %>" class="btn btn-success btn-apuntarse" id="apuntarse">Apuntarse</a>
                     <%} else {%>
                     <p>Ya estás apuntado a este evento.</p>
                     <% } %>
@@ -39,5 +39,4 @@
     </div>
 </main>
 <%- include('./layouts/footer'); %>
-<script src="/scripts/infoEvento.js"></script>
 </body>
