@@ -17,7 +17,7 @@
         solicitudes.forEach(solicitud => {%>
             <tr>
                 <td><a class="enlacetabla" href="/info-evento/<%= solicitud.mercado %>"><%= solicitud.nombremercado %></a></td>
-                <td><a href="#" class="btn-aceptar" data-id="<%= solicitud.id %>">Aceptar</a></td>
+                <td><a href="/apuntarse/<%= solicitud.mercado %>" class="btn-aceptar" data-id="<%= solicitud.id %>">Aceptar</a></td>
                 <td><a href="/solicitud_aceptar/<%= solicitud.id %>/0" class="btn-rechazar">Rechazar</a></td>
             </tr>
         <% });} else { %>

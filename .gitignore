@@ -2,3 +2,5 @@
 node_modules
 public/scripts/inicio.js
 public/scripts/mailer.js
+public/scripts/infoEvento.js
+public/scripts/listaSolicitud.js

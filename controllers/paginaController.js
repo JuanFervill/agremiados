@@ -487,22 +487,7 @@ const apuntarse  = async (req, res) => {
                 return res.status(500).send('Error guardando sesión');
             }
 
-            try {
-                const browser = await puppeteer.launch({
-                    args: ['--no-sandbox', '--disable-setuid-sandbox']
-                });
-                const page = await browser.newPage();
-                await page.setContent(contenidoMail, { waitUntil: 'networkidle0' });
-                const buffer = await page.pdf({ format: 'A5', printBackground: true });
-                await browser.close();
-
-                res.setHeader('Content-Type', 'application/pdf');
-                res.setHeader('Content-Disposition', 'attachment; filename="reporte.pdf"');
-                res.end(buffer);
-            } catch (err) {
-                console.error(err);
-                res.status(500).send('Error generando el PDF');
-            }
+            res.redirect(`/listaEventos/1`);
         });
 
 
