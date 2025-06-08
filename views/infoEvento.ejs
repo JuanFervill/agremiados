@@ -5,14 +5,14 @@
 <main class="container mt-5">
     <div class="row">
         <div class="col-md-5">
-            <img src="<%= mercado.imagen %>" alt="imagen viaje" class="img-fluid">
+            <img src="/upload/foto-eventos/<%= mercado.imagen %>" alt="imagen viaje" class="img-fluid">
         </div>
         <div class="col-md-7">
             <h1><%= mercado.nombre %></h1>
             <p><%= mercado.descripcion %></p>
             <p>Fecha: <%= moment(mercado.fecha).format('DD/MM/YYYY') %></p>
             <% if(userid){ %>
-                <% if(mercado.capacidad>0){ %>
+                <% if(mercado.capacidad>0 && user.rol!="admin"){ %>
                     <p>Plazas disponibles: <%= mercado.capacidad %></p>
                     <% if(!apuntado){ %>
                     <p id="idviaje" style="display: none"><%= mercado.id %></p>
@@ -20,9 +20,11 @@
                     <%} else {%>
                     <p>Ya estás apuntado a este evento.</p>
                     <% } %>
-                <% } else { %>
-                <p> No hay plazas disponibles </p>
-            <% }} %>
+                <% } else if(user.rol=="admin") { %>
+                        <a href="/editar/<%= mercado.id %>" class="btn btn-success btn-apuntarse">Editar</a>
+            <% } else { %>
+                        <p> No hay plazas disponibles </p>
+            <%}}%>
         </div>
         <!-- Usamos el iframde de la pai de Maps Embed para mostrar la ubicacion del evento -->
         <iframe
@@ -39,4 +41,5 @@
     </div>
 </main>
 <%- include('./layouts/footer'); %>
+<script src="/scripts/infoEvento.js"></script>
 </body>

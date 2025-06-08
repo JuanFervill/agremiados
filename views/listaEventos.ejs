@@ -21,16 +21,24 @@
                 <td><a class="enlacetabla" href="/info-evento/<%= mercado.id %>"><%= mercado.nombre %></a></td>
                 <td><%= moment(mercado.fecha).format('DD/MM/YYYY') %></td>
                 <td><%= mercado.ubicacion %></td>
-                <td><a class="btn-danger" href="/anula-evento/<%= mercado.id %>">Anular</a></td>
+                <% if(user.rol==`admin`){ %>
+                    <td><a class="btn-danger" href="/listaUsers/1/<%= mercado.id %>">Asistentes</a></td>
+                <%} else {%>
+                    <td><a class="btn-danger" href="/anula-evento/<%= mercado.id %>">Anular</a></td>
+                <% } %>
             </tr>
         <% }); } else { %>
             <tr>
                 <td>No hay eventos</td>
             </tr>
         <% } %>
+
         </tbody>
     </table>
     <div class="container text-center">
+        <% if( mercados && user.rol==`admin`){ %>
+            <a class="btn btn-perfil" href="/nuevoevento">Crear Evento</a>
+        <% } %>
         <div class="row">
             <p><%= page %>/<%= max %></p>
             <% if(mercados && mercados.length > 0) {

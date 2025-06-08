@@ -1,0 +1,57 @@
+<%- include('./layouts/index'); %>
+
+<body class="home">
+<%- include('./layouts/header'); %>
+<h1 class="titulospags">Asistentes al evento</h1>
+<h2 class="titulospags"><%= mercado.nombre %></h2>
+
+<div class="container mt-4 contenido-principal infodiv">
+    <table class="table infodiv">
+        <thead>
+        <tr>
+            <th scope="col"></th>
+            <th scope="col">Nombre</th>
+            <th scope="col">Artesania</th>
+            <th scope="col"></th>
+        </tr>
+        </thead>
+        <tbody>
+        <% if(asistentes && asistentes.length > 0){
+        asistentes.forEach(asistente => {%>
+            <tr>
+                <td>
+                    <a href="/perfil/<%= asistente.id %>">
+                        <img src="/upload/perfiles/<%= asistente.fotoPerfil %>" alt="Foto de perfil" class="perfil-img" />
+                    </a>
+                </td>
+                <td><%= asistente.nombre %></td>
+                <td><%= asistente.artesania %></td>
+                <td><a class="btn-danger" href="/anula-user/<%= mercado.id %>/<%= asistente.id %>">Anular</a></td>
+            </tr>
+        <% });} else { %>
+            <tr>
+                <td>Ahora mismo no hay participantes</td>
+            </tr>
+        <% } %>
+        </tbody>
+    </table>
+        <div class="row">
+            <p><%= page %>/<%= max %></p>
+            <% if(asistentes && asistentes.length > 0) {
+            if(prev)
+            { %>
+            <div class="col">
+                <a class="btn btn-success" href="/listaUsers/<%= prev %>/<%= mercado.id %>">Previo</a>
+            </div>
+            <%}if(sig && page<max){%>
+            <div class="col">
+                <a class="btn btn-success" href="/listaUsers/<%= sig %>/<%= mercado.id %>">Siguiente</a>
+            </div>
+            <%}}%>
+        </div>
+    </div>
+</div>
+
+
+<%- include('./layouts/footer'); %>
+</body>

@@ -1,8 +1,9 @@
 import Sequelize from "sequelize";
 import db from "../config/db.js";
 import {Usuario} from "./usuarios.js";
+import {Mercado} from "./mercados.js";
 
-export const Imagen = db.define("imagenes",{
+export const Solicitud = db.define("solicitudes",{
     id:{
         type: Sequelize.INTEGER,
         primaryKey: true,
@@ -16,29 +17,25 @@ export const Imagen = db.define("imagenes",{
             key: 'id'
         }
     },
-    titulo:{
+    mercado:{
+        type: Sequelize.INTEGER,
+        allowNull: false,
+        references: {
+            model: Mercado,
+            key: 'id'
+        }
+    },
+    nombremercado:{
         type: Sequelize.STRING,
         allowNull: false,
     },
-    artesania:{
-        type: Sequelize.STRING,
-        allowNull: false,
-    },
-    desc:{
-        type: Sequelize.STRING,
-        allowNull: false,
-    },
-    nombreimg:{
-        type: Sequelize.STRING,
-        allowNull: false,
-    },
-    username:{
-        type: Sequelize.STRING,
+    respuesta:{
+        type: Sequelize.INTEGER,
         allowNull: false,
     }
 }, {
-    tableName: 'imagen',
+    tableName: 'solicitudes',
     timestamps: false
 });
 
-Imagen.sync({ alter: true }).catch(console.error);
+Solicitud.sync({ alter: true }).catch(console.error);

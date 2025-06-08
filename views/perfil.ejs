@@ -5,24 +5,29 @@
 <div class="container mt-4 contenido-principal" id="inicio">
     <div class="row">
         <div class="col-md-1">
-            <svg class="fotoperfil" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" width="48" height="48" stroke-width="2">
-                <path d="M12 12m-9 0a9 9 0 1 0 18 0a9 9 0 1 0 -18 0"></path>
-                <path d="M12 10m-3 0a3 3 0 1 0 6 0a3 3 0 1 0 -6 0"></path>
-                <path d="M6.168 18.849a4 4 0 0 1 3.832 -2.849h4a4 4 0 0 1 3.834 2.855"></path>
-            </svg>
+                <img src="/upload/perfiles/<%= usuario.fotoPerfil %>" alt="Foto de perfil" class="perfil-img" />
         </div>
         <div class="col-md-10 infodiv">
             <h3 class="titulo-pagina"><%= usuario.nombre %></h3>
-            <p class="descripcion">
-                <%= usuario.artesania %>
-            </p>
+            <% if (miperfil){ %>
+            <div class="d-flex justify-content-between">
+                <a class="btn btn-perfil" href="/formularioPerfil">Cambiar foto</a>
+                <% if(usuario.rol!="admin"){ %>
+            <a class="btn btn-perfil" href="/formularioImagen">Subir imagen</a>
+                <%} else {%>
+                    <a class="btn btn-perfil" href="/registro">Registrar admin</a>
+                <% } %>
+            </div>
+            <%} else if (user && user.rol=="admin"){%>
+                <a class="btn btn-perfil" href="/formularioSolicitud/<%= usuario.id %>">Solicitarlo</a>
+            <%}%>
             <br>
             <% if (imagenes.length > 0) { imagenes.forEach(imagen => { %>
                 <div class="col-10 col-md-10 col-lg-6 mb-6 align-self-center d-block w-100 publicacion">
                     <div class="card shadow-lg border-light infodiv">
                         <div class="card-body">
                             <a href="/info-arte/<%= imagen.id %>">
-                                <img src="/img/<%= imagen.nombreimg %>" class="imagencarrusel d-block w-100" alt="Imagen 3">
+                                <img src="/upload/<%= imagen.nombreimg %>" class="imagencarrusel d-block w-100" alt="Imagen 3">
                             </a>
                             <blockquote class="blockquote">
                                 <p class="tipo-arte"><%= imagen.artesania %></p>
@@ -35,7 +40,11 @@
                 <div class="col-10 col-md-10 col-lg-6 mb-6 align-self-center d-block w-100 publicacion">
                     <div class="card shadow-lg border-light infodiv">
                         <div class="card-body">
+                            <% if(usuario.rol!="admin"){ %>
                             <p>No hay publicaciones subidas</p>
+                            <%} else {%>
+                                    <a class="btn btn-perfil" href="/listaEventos/1">Ver eventos</a>
+                            <% } %>
                         </div>
                     </div>
                 </div>

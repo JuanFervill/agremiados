@@ -1,40 +1,49 @@
 import Sequelize from "sequelize";
 import db from "../config/db.js";
+import { Usuario } from "./usuarios.js";
 
-export const Mercado = db.define("mercados",{
-    id:{
+export const Mercado = db.define("mercados", {
+    id: {
         type: Sequelize.INTEGER,
         primaryKey: true,
         autoIncrement: true,
     },
-    nombre:{
+    nombre: {
         type: Sequelize.STRING,
         allowNull: false,
     },
-    fecha:{
+    fecha: {
         type: Sequelize.DATE,
         allowNull: false,
     },
-    ubicacion:{
+    ubicacion: {
         type: Sequelize.STRING,
         allowNull: false,
     },
-    ubi_param:{
+    ubi_param: {
         type: Sequelize.STRING,
         allowNull: false,
     },
-    descripcion:{
+    descripcion: {
         type: Sequelize.STRING,
         allowNull: false,
     },
-    imagen:{
+    imagen: {
         type: Sequelize.STRING,
         allowNull: false,
     },
-    capacidad:{
+    capacidad: {
         type: Sequelize.INTEGER,
         allowNull: false,
     },
+    creador: {
+        type: Sequelize.INTEGER,
+        allowNull: false,
+        references: {
+            model: Usuario,
+            key: 'id'
+        }
+    }
 }, {
     tableName: 'mercados',
     timestamps: false

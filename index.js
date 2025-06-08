@@ -3,7 +3,7 @@ import router from "./routers/index.js";
 import db from "./config/db.js";
 import dotenv from "dotenv";
 import session from "express-session";
-
+import './models/solicitudes.js';
 
 dotenv.config();
 
@@ -32,6 +32,8 @@ app.use(session(
 }));
 
 app.use('/', router);
+
+app.use("/upload", express.static("upload"));
 
 app.listen(port, () => {
     console.log('SERVIDOR EN EL PUERTO' + port);

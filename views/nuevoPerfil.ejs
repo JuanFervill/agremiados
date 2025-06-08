@@ -1,0 +1,20 @@
+<%- include('./layouts/index'); %>
+
+<body class="home">
+<%- include('./layouts/header'); %>
+
+<div class="container mt-5">
+    <h1 class="titulospags">Subir nueva foto de perfil</h1>
+
+    <form action="/subePerfil" method="post" enctype="multipart/form-data" class="infodiv mt-4">
+        <div class="mb-3">
+            <label for="imagenp" class="form-label">Imagen</label>
+            <input type="file" name="imagenp" id="imagenp" accept="image/*" class="form-control input-login" required />
+        </div>
+
+        <button type="submit" class="btn btn-success">Subir</button>
+    </form>
+</div>
+
+<%- include('./layouts/footer'); %>
+</body>

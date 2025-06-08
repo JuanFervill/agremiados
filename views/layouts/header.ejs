@@ -12,22 +12,26 @@
 
             <div class="collapse navbar-collapse justify-content-end" id="navbarNav">
                 <ul class="navbar-nav">
+                    <% if(!userid || user.rol==`user`){ %>
                     <li class="nav-item"><a class="nav-link" href="/eventosDisp/1">Eventos</a></li>
+                    <% } %>
                     <li class="nav-item"><a class="nav-link" href="/listaEventos/1">Mis Eventos</a></li>
                     <li class="nav-item"><a class="nav-link" href="/arte/1">Arte</a></li>
                 </ul>
                 <% if(userid){ %>
                     <div class="ms-md-3 d-flex align-items-center card p-2 rounded infodiv" id="logout" style="max-width: 250px;">
                         <a href="/perfil/<%= user.id %>">
-                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" width="24" height="24" stroke-width="2">
-                            <path d="M12 12m-9 0a9 9 0 1 0 18 0a9 9 0 1 0 -18 0"></path>
-                            <path d="M12 10m-3 0a3 3 0 1 0 6 0a3 3 0 1 0 -6 0"></path>
-                            <path d="M6.168 18.849a4 4 0 0 1 3.832 -2.849h4a4 4 0 0 1 3.834 2.855"></path>
-                        </svg>
+                            <img src="/upload/perfiles/<%= user.fotoPerfil %>" alt="Foto de perfil" class="perfil-img" />
                         </a>
                         <div>
                             <p class="mb-0 fw-bold" id="nombreuser"><%= user.nombre %></p>
+                            <% if (solicitudes.length > 0) { %>
+                                <a href="/listaSolicitudes/1" class="btn btn-warning btn-sm my-1">
+                                    Solicitudes (<%= solicitudes.length %>)
+                                </a>
+                            <% } %>
                             <p class="mb-0 text-muted small" id="tipoarte"><%= user.artesania %></p>
+
                             <a class="btn btn-success h-25" href="/logout">Logout</a>
                         </div>
                     </div>

@@ -23,6 +23,16 @@ export const Usuario = db.define("usuarios",{
         type: Sequelize.STRING,
         allowNull: false,
     },
+    rol:{
+        type: Sequelize.STRING,
+        allowNull: false,
+        defaultValue: 'user'
+    },
+    fotoPerfil:{
+        type: Sequelize.STRING,
+        allowNull: false,
+        defaultValue: 'pofile.png'
+    }
 }, {
     tableName: 'usuarios',
     timestamps: false

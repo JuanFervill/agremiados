@@ -1,0 +1,32 @@
+<%- include('./layouts/index'); %>
+
+<body class="home">
+<%- include('./layouts/header'); %>
+
+<div class="container mt-5">
+    <h1 class="titulospags">Solicitar participación de <%= usuario.nombre %></h1>
+
+    <% if (errores) { %>
+        <% errores.forEach(error => { %>
+            <div class="alert col alert-danger text-center"><%= error.mensaje %></div>
+        <% }); %>
+    <% } %>
+
+    <form action="/mandaSoli" method="post" class="infodiv mt-4">
+
+        <div class="mb-3">
+            <label for="mercado" class="form-label">Tus eventos</label>
+            <select class="form-select" id="mercado" name="mercado">
+                <% mercados.forEach(mercado => { %>
+                    <option value="<%= mercado.id %>"><%= mercado.nombre %></option>
+                <% }) %>
+            </select>
+        </div>
+        <input type="hidden" name="artesano" id="artesano" value="<%= usuario.id %>">
+
+        <button type="submit" class="btn btn-success">Solicitar</button>
+    </form>
+</div>
+
+<%- include('./layouts/footer'); %>
+</body>

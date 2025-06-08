@@ -1,0 +1,106 @@
+<%- include('./layouts/index'); %>
+
+<body class="home">
+<%- include('./layouts/header'); %>
+
+<div class="container mt-5">
+    <% if(edit){ %>
+
+        <h1 class="titulospags">Editar evento</h1>
+        <% if (errores) { %>
+            <% errores.forEach(error => { %>
+                <div class="alert col alert-danger text-center"><%= error.mensaje %></div>
+            <% }); %>
+        <% } %>
+        <form action="/creaEvento" method="post" enctype="multipart/form-data" class="infodiv mt-4">
+            <input type="hidden" name="Aeditar" id="Aeditar" value="<%= edit.id %>">
+
+            <div class="mb-3">
+                <label for="titulo" class="form-label">Título del evento</label>
+                <input type="text" name="titulo" id="titulo" value="<%= edit.nombre %>" class="form-control input-login" required />
+            </div>
+
+            <div class="mb-3">
+                <label for="desc" class="form-label">Descripción del evento</label>
+                <input type="text" name="desc" id="desc" class="form-control input-login" value="<%= edit.descripcion %>" required />
+            </div>
+
+            <div class="mb-3">
+                <label for="capacidad" class="form-label">Capacidad del evento</label>
+                <input type="number" name="capacidad" id="capacidad" class="form-control input-login" min="<%= edit.capacidad %>" value="<%= edit.capacidad %>" required />
+            </div>
+
+            <div class="mb-3">
+                <label for="fecha" class="form-label">Fecha del evento</label>
+                <input type="date" name="fecha" id="fecha" class="form-control input-login" value="<%= edit.fecha %>" required />
+            </div>
+
+            <div class="mb-3">
+                <label for="sitio" class="form-label">Ubicación del evento</label>
+                <input type="text" name="sitio" id="sitio" class="form-control input-login" value="<%= edit.ubicacion %>" required />
+            </div>
+
+            <div class="mb-3">
+                <label for="ubi" class="form-label">Parámetros de ubicación</label>
+                <input type="text" name="ubi" id="ubi" class="form-control input-login" placeholder="Nombre+de+la+calle,Ciudad,Pais" value="<%= edit.ubi_param %>" required />
+            </div>
+
+            <button type="submit" class="btn btn-success">Editar</button>
+        </form>
+
+    <% } else { %>
+
+    <h1 class="titulospags">Crear nuevo evento</h1>
+    <% if (errores) { %>
+        <% errores.forEach(error => { %>
+            <div class="alert col alert-danger text-center"><%= error.mensaje %></div>
+        <% }); %>
+    <% } %>
+    <form action="/creaEvento" method="post" enctype="multipart/form-data" class="infodiv mt-4">
+
+        <input type="hidden" name="Aeditar" id="Aeditar" value="no">
+
+        <div class="mb-3">
+            <label for="titulo" class="form-label">Título del evento</label>
+            <input type="text" name="titulo" id="titulo" class="form-control input-login" required />
+        </div>
+
+        <div class="mb-3">
+            <label for="desc" class="form-label">Descripción del evento</label>
+            <input type="text" name="desc" id="desc" class="form-control input-login" required />
+        </div>
+
+        <div class="mb-3">
+            <label for="capacidad" class="form-label">Capacidad del evento</label>
+            <input type="number" name="capacidad" id="capacidad" class="form-control input-login" min="1" required />
+        </div>
+
+        <div class="mb-3">
+            <label for="fecha" class="form-label">Fecha del evento</label>
+            <input type="date" name="fecha" id="fecha" class="form-control input-login" required />
+        </div>
+
+        <div class="mb-3">
+            <label for="sitio" class="form-label">Ubicación del evento</label>
+            <input type="text" name="sitio" id="sitio" class="form-control input-login" required />
+        </div>
+
+        <div class="mb-3">
+            <label for="ubi" class="form-label">Parámetros de ubicación</label>
+            <input type="text" name="ubi" id="ubi" class="form-control input-login" placeholder="Nombre+de+la+calle,Ciudad,Pais" required />
+        </div>
+
+        <div class="mb-3">
+            <label for="imagen" class="form-label">Imagen del evento</label>
+            <input type="file" name="imagen" id="imagen" accept="image/*" class="form-control input-login" required />
+        </div>
+
+        <button type="submit" class="btn btn-success">Subir</button>
+    </form>
+
+    <% } %>
+
+</div>
+
+<%- include('./layouts/footer'); %>
+</body>

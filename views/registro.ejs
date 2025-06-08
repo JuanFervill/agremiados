@@ -24,10 +24,14 @@
                     <label for="password_registro" class="form-label">Contraseña</label>
                     <input type="password" class="form-control form-control-lg" id="password_registro" name="password_registro" placeholder="Contraseña">
                 </div>
+                <% if(!user || user.rol!="admin"){ %>
                 <div class="mb-3">
                     <label for="artesania_registro" class="form-label">Artesanía principal</label>
                     <input type="text" class="form-control form-control-lg" id="artesania_registro" name="artesania_registro" placeholder="Pirograbado">
                 </div>
+                <% } else { %>
+                    <input type="hidden" class="form-control form-control-lg" id="artesania_registro" name="artesania_registro" value="admin" placeholder="Pirograbado">
+                <% } %>
                 <button type="submit" class="btn btn-success">Registrarse</button>
             </form>
         </div>
